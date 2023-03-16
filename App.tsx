@@ -33,7 +33,7 @@ export default function App() {
         <Stack.Screen name="EditNote" component={EditNoteScreen} />
       </Stack.Navigator>
 
-      <StatusBar style="auto" />
+      <StatusBar style="dark" />
     </NavigationContainer>
   );
 }

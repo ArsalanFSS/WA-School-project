@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, StyleSheet, Pressable, ScrollView, View } from "react-native";
+import { Text, StyleSheet, Pressable, ScrollView, View, useColorScheme } from "react-native";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { getAllNotes, Note } from "../services/noteStoreService";
 import { ScreenNavigationStackProp } from "../App";
@@ -7,6 +7,7 @@ import { ScreenNavigationStackProp } from "../App";
 export const SaveNotesList: React.FC = () => {
   const [notes, setNotes] = useState<Note[] | undefined>();
   const navigation = useNavigation<ScreenNavigationStackProp>();
+  const theme = useColorScheme();
 
   useFocusEffect(() => {
     getAllNotes().then((result) => setNotes(result.notes));
@@ -22,12 +23,12 @@ export const SaveNotesList: React.FC = () => {
             style={({ pressed }) => [
               styles.noteContainer,
               {
-                backgroundColor: pressed ? "#ffb70342" : "#fff",
+                backgroundColor: pressed ? "#f2f2f2" : theme=="dark" ? "#0a0b0a" : "#fff",
               },
             ]}
           >
             <View key={id} style={styles.row}>
-              <Text key={id} style={styles.note}>
+              <Text key={id} style={theme=="dark" ? styles.note_dark :styles.note_light}>
                 {text.length === 0 ? "(Blank note)" : text}
               </Text>
             </View>
@@ -39,15 +40,32 @@ export const SaveNotesList: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  note: {
-    paddingVertical: 20,
-    width: "100%",
+  note_light: {
+    paddingVertical: 25,
+    paddingHorizontal: 10,
+    width: "95%",
+    alignSelf: "center",
     fontSize: 16,
+    color: "black",
+    backgroundColor: "#ffb70342",
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: "#e6a400"
+  },
+  note_dark: {
+    paddingVertical: 25,
+    paddingHorizontal: 10,
+    width: "95%",
+    alignSelf: "center",
+    fontSize: 16,
+    color: "white",
+    backgroundColor: "#ffb70342",
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: "#e6a400"
   },
   row: {
-    borderBottomColor: "#e6e6e6",
-    borderBottomWidth: 1,
-    width: "90%",
+    width: "100%",
     alignSelf: "center",
     flex: 1,
     justifyContent: "center",
@@ -55,6 +73,7 @@ const styles = StyleSheet.create({
   noteContainer: {
     width: "100%",
     flex: 1,
-    height: 80,
+    height: 90,
+    marginVertical: 0
   },
 });
