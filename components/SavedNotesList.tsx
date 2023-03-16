@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   },
   note_dark: {
     paddingVertical: 25,
-    paddingHorizontal: 10,
+    paddingHorizontal: 10, 
     width: "95%",
     alignSelf: "center",
     fontSize: 16,
@@ -90,7 +90,8 @@ const styles = StyleSheet.create({
   noteContainer: {
     width: "100%",
     flex: 1,
-    height: 80,
+    minHeight: 80,
+    overflow: "hidden",
     marginTop: 10,
   },
 });

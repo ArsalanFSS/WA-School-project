@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "take-notes",
-    "slug": "take-notes",
-    "version": "1.0.0",
+    "name": "Sussy Notes",
+    "slug": "sussy-notes",
+    "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
@@ -24,10 +24,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFF"
-      }
+      },
+      "package": "com.jayu1.sussynotes"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3805dbba-0e1f-4fe9-9a90-ac362f07cee6"
+      }
     }
   }
 }
