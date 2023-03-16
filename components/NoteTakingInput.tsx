@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput, StyleSheet } from "react-native";
+import { TextInput, StyleSheet, useColorScheme } from "react-native";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { ScreenNavigationStackProp } from "../App";
 import { getNote } from "../services/noteStoreService";
@@ -10,6 +10,7 @@ type Props = {
 };
 
 export const NoteTakingInput: React.FC<Props> = ({ noteId }) => {
+  const theme = useColorScheme();
   const [text, onChangeText] = React.useState<string>("");
   const navigation = useNavigation<ScreenNavigationStackProp>();
 
@@ -34,7 +35,7 @@ export const NoteTakingInput: React.FC<Props> = ({ noteId }) => {
         onChangeText={onChangeText}
         value={text}
         multiline={true}
-        style={styles.noteInput}
+        style={theme == "dark" ? styles.noteInput_dark : styles.noteInput_light}
         textAlignVertical="top"
       />
     </>
@@ -42,12 +43,21 @@ export const NoteTakingInput: React.FC<Props> = ({ noteId }) => {
 };
 
 const styles = StyleSheet.create({
-  noteInput: {
+  noteInput_light: {
     fontSize: 16,
     flex: 1,
     paddingTop: 30,
     paddingBottom: 20,
     paddingHorizontal: 20,
     backgroundColor: "#ffb70342",
+  },
+  noteInput_dark: {
+    color: "white",
+    fontSize: 16,
+    flex: 1,
+    paddingTop: 30,
+    paddingBottom: 20,
+    paddingHorizontal: 20,
+    backgroundColor: "#0a0b0a",
   },
 });

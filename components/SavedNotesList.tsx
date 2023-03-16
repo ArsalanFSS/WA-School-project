@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Text, StyleSheet, Pressable, ScrollView, View, useColorScheme } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  Pressable,
+  ScrollView,
+  View,
+  useColorScheme,
+} from "react-native";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { getAllNotes, Note } from "../services/noteStoreService";
 import { ScreenNavigationStackProp } from "../App";
@@ -23,12 +30,22 @@ export const SaveNotesList: React.FC = () => {
             style={({ pressed }) => [
               styles.noteContainer,
               {
-                backgroundColor: pressed ? "#f2f2f2" : theme=="dark" ? "#0a0b0a" : "#fff",
+                backgroundColor:
+                  pressed && theme == "dark"
+                    ? "#383838"
+                    : pressed
+                    ? "#f2f2f2"
+                    : theme == "dark"
+                    ? "#0a0b0a"
+                    : "#fff",
               },
             ]}
           >
             <View key={id} style={styles.row}>
-              <Text key={id} style={theme=="dark" ? styles.note_dark :styles.note_light}>
+              <Text
+                key={id}
+                style={theme == "dark" ? styles.note_dark : styles.note_light}
+              >
                 {text.length === 0 ? "(Blank note)" : text}
               </Text>
             </View>
@@ -49,8 +66,8 @@ const styles = StyleSheet.create({
     color: "black",
     backgroundColor: "#ffb70342",
     borderWidth: 1,
-    borderRadius: 10,
-    borderColor: "#e6a400"
+    borderRadius: 5,
+    borderColor: "#e6a400",
   },
   note_dark: {
     paddingVertical: 25,
@@ -59,10 +76,10 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     fontSize: 16,
     color: "white",
-    backgroundColor: "#ffb70342",
+    backgroundColor: "#ffb70380",
     borderWidth: 1,
-    borderRadius: 10,
-    borderColor: "#e6a400"
+    borderRadius: 5,
+    borderColor: "#e6a400",
   },
   row: {
     width: "100%",
@@ -73,7 +90,7 @@ const styles = StyleSheet.create({
   noteContainer: {
     width: "100%",
     flex: 1,
-    height: 90,
-    marginVertical: 0
+    height: 80,
+    marginTop: 10,
   },
 });
