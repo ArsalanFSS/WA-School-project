@@ -5,6 +5,7 @@ import {
   createNativeStackNavigator,
   NativeStackNavigationProp,
 } from "@react-navigation/native-stack";
+import { useColorScheme } from "react-native";
 import { HomeScreen } from "./screens/HomeScreen";
 import { EditNoteScreen } from "./screens/EditNoteScreen";
 import { NewNote } from "./components/NewNote";
@@ -19,6 +20,7 @@ export type ScreenNavigationStackProp =
   NativeStackNavigationProp<RootStackParamList>;
 
 export default function App() {
+  const theme = useColorScheme();
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -27,13 +29,20 @@ export default function App() {
           component={HomeScreen}
           options={{
             headerTitle: "My notes",
+            headerStyle: {
+              backgroundColor: theme == "dark" ? "#1c1c1c" : "white",
+            },
+            headerTitleStyle: {
+              fontWeight: "bold",
+              color: theme == "dark" ? "white" : "black",
+            },
             headerRight: () => <NewNote />,
           }}
         />
         <Stack.Screen name="EditNote" component={EditNoteScreen} />
       </Stack.Navigator>
 
-      <StatusBar style="dark" />
+      <StatusBar style={theme == "dark" ? "light" : "dark"} />
     </NavigationContainer>
   );
 }
