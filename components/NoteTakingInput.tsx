@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     paddingBottom: 20,
     paddingHorizontal: 20,
-    backgroundColor: "#ffb70342",
+    backgroundColor: "#f4e3b4",
   },
   noteInput_dark: {
     color: "white",

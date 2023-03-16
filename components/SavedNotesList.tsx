@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     fontSize: 16,
     color: "black",
-    backgroundColor: "#ffb70342",
+    backgroundColor: "#f4e3b4",
     borderWidth: 1,
     borderRadius: 5,
     borderColor: "#e6a400",
